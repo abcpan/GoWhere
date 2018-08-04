@@ -4,13 +4,18 @@
 	<div class="header">
 		<div class="header-left"><div class="iconfont back-icon">&#xe624;</div></div>
 		<div class="header-input"><span class="iconfont">&#xe632;</span>输入城市/景点/游玩主题</div>
-		<div class="header-right">城市<span class="iconfont arrow-icon">&#xe6aa;</span></div>
+		<!-- <div class="header-right">{this.city}<span class="iconfont arrow-icon">&#xe6aa;</span></div> -->
 	</div>
 </template>
 <!-- 模板的逻辑 -->
 <script>
 export default{
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  props: {
+  	city: {
+  		type: String
+  	}
+  }
 }
 </script>
 <style lang='stylus' scoped>
@@ -33,7 +38,7 @@ export default{
 			height: .64rem
 			line-height: .64rem
 			margin-top: .12rem
-			padding-left: .2rem
+			padding-left: .3rem
 			background: #fff
 			border-radius: .1rem
 			color: #ccc

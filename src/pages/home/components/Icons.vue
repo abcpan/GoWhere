@@ -1,6 +1,6 @@
 <template>
 	<div class="icons">
-		<swiper>
+		<swiper :options="swiperOption">
 			<swiper-slide v-for="(pageCode,index) in pages" :key="index">
 				<div class="icon" v-for="item in pageCode" :key="item.id" >
 					<div class="icon-img">
@@ -16,61 +16,26 @@
 <script>
 export default {
 	name: 'HomeIcons',
+	props: {
+		list: {
+			type: Array
+		}
+	},
+
 	data: function() {
 		return {
-			iconList:[
-				{
-					id:'001',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-					desc:'热门景点潘贵成加油你一定会成功的 你必须成功 没有后路'
-				},{
-					id:'002',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png',
-					desc:'名胜古迹'},
-				{
-					id:'003',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/f5/a963333e1fa802.png',
-					desc:'本地玩乐'
-				},{
-					id:'004',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/96/c70f1e85ae4a4f02.png',
-					desc:'自然风光'},
-				{
-					id:'005',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/80/416c6ab3368d1f02.png',
-					desc:'全部玩乐'
-				},{
-					id:'006',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/80/416c6ab3368d1f02.png',
-					desc:'全部玩乐'
-				},{
-					id:'007',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-					desc:'成都定制游'
-				},{
-					id:'008',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/95/8d02011d149bdb02.png',
-					desc:'成都必游'
-				},{
-					id:'009',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png',
-					desc:'海洋馆'
-				},{
-					id:'010',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/95/8d02011d149bdb02.png',
-					desc:'汽车票'
-				},{
-					id:'011',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png',
-					desc:'亲子游玩'
-				}]
+			/*禁止自动滚动,并重复滑动*/
+			swiperOption:{  
+				autoplay:false,
+				loop: true
+			}
 		}
 	},
 	computed: {
 		// 生成二维数组
 		pages: function () {
 			const pages = []
-			this.iconList.forEach((item,index) => {
+			this.list.forEach((item,index) => {
 				const pageCode = Math.floor(index / 8)
 				if(!pages[pageCode]){
 					pages[pageCode]= []
