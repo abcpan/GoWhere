@@ -9,6 +9,7 @@
 					<p class="icon-desc">{{item.desc}}</p>
 				</div>
 			</swiper-slide>
+			<div class="swiper-pagination" slot="pagination"></div>
 		</swiper>
 	</div>
 </template>
@@ -27,7 +28,8 @@ export default {
 			/*禁止自动滚动,并重复滑动*/
 			swiperOption:{  
 				autoplay:false,
-				loop: true
+				loop: true,
+				pagination: '.swiper-pagination',
 			}
 		}
 	},
@@ -50,7 +52,7 @@ export default {
 
 <style lang='stylus' scoped>
 @import '~styles/varibles.styl'
-@import '~styles/mixins.styl'
+@import '~styles/mixins.styl'	
 	.icons >>> .swiper-container
 		height: 0
 		padding-bottom:50%

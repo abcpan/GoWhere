@@ -4,7 +4,12 @@
 	<div class="header">
 		<div class="header-left"><div class="iconfont back-icon">&#xe624;</div></div>
 		<div class="header-input"><span class="iconfont">&#xe632;</span>输入城市/景点/游玩主题</div>
-		<!-- <div class="header-right">{this.city}<span class="iconfont arrow-icon">&#xe6aa;</span></div> -->
+		<!--页面跳转内置组件 -->
+		<router-link to="/city">
+			<div class="header-right">
+				{{city}}<span class="iconfont arrow-icon">&#xe6aa;</span>
+			</div>
+		</router-link>
 	</div>
 </template>
 <!-- 模板的逻辑 -->
@@ -46,6 +51,8 @@ export default{
 			width: 1.24rem
 			float: right
 			text-align: center
+			font-weight:bold
+			color: white
 			.arrow-icon
 				font-size: .24rem
 				margin-left: -0.04rem

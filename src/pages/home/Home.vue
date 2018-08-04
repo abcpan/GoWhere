@@ -30,7 +30,7 @@ export default{
   },
   data: function() {
   	return {
-  		city: "",
+  		city: "北京",
   		swiperList: [],
   		iconList:[],
   		weekendList: [],
