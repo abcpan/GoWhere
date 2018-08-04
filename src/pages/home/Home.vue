@@ -5,6 +5,7 @@
 		<!-- 组件名如果为两个单词构成 组件标签为两个单词且-进行连接,如果为一个则为一个单词(两者首字均母小写)  -->
 		<home-header></home-header>
 		<home-swiper></home-swiper>
+		<home-icons></home-icons>
 	</div>
 </template>
 <!-- 模板的逻辑 -->
@@ -12,11 +13,13 @@
 	//HomeHeader为name 的名称(组件名) 区别于文件名
 import HomeHeader from './components/Header'
 import HomeSwiper from './components/Swiper'
+import HomeIcons from './components/Icons'
 export default{
   name: 'Home',
   components: {
   	HomeHeader: HomeHeader,
-  	HomeSwiper: HomeSwiper
+  	HomeSwiper: HomeSwiper,
+  	HomeIcons:HomeIcons
   }
 }
 </script>

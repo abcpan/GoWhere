@@ -38,8 +38,9 @@ export default {
 </script>
 
 <style lang='stylus' scoped>
-	.wrapper >>> .swiper-pagination-bullet-active  // 样式穿透
-		background: #fff
+	/*为样式表wrapper下的swiper-pagination-bullet-acitive(不在这个组件,所有无法直接设置) 设置相关属性*/
+	.wrapper >>> .swiper-pagination-bullet-active
+		background: white !important
 	.wrapper  // 预设的高宽比
 		overflow: hidden
 		width: 100%
