@@ -1,14 +1,60 @@
 <template>
 	<ul class="list">
-		<li class="item" v-for="(value,key) in cities" :key="key">{{key}}</li>
+		<li class="item" 
+		v-for="item in letters" 
+		:key="item"
+		:ref="item"
+		@touchstart="handleTouchstart"
+		@touchmove="handleTouchmove"
+		@touchend="handleTouchend"
+		@click="handleLetterClick"
+		>{{item}}</li>
 	</ul>
 </template>
 
 <script>
-	export default{
+	export default {
 		name: 'CityAlphabet',
 		props: {
 			cities: Object
+		},
+		computed: {
+			letters: function() {
+				var letters =[]
+				//对象遍历出来的是键 ,数组循环出来的是索引
+				for(var i in this.cities){
+					letters.push(i)
+				}
+				return letters
+			}
+		},
+		data: function() {
+			return {
+				touchStatus:false
+			}
+		},
+		methods: {
+			handleLetterClick: function(e) {
+				this.$emit("change",e.target.innerText)
+			},
+			handleTouchstart: function() {
+				this.touchStatus=true
+			},
+			//此函数能获取到 触摸字母的下标 此外将 如同handleLetterClick函数返回相关对应字母
+			handleTouchmove: function(e) {
+				if(this.touchStatus) {
+					var startY=this.$refs['A'][0].offsetTop
+					var touchY=e.touches[0].clientY-79 // 0项表示手指的一些信息  clientY表示获取距离最顶部的值
+					var index = Math.floor((touchY-startY)/23)  //行高由22提高到23,使得索引号比实际第几个少1,因为式子如果采用真实行高得到的是第几个
+					if(index >= 0 && index<this.letters.length){
+						this.$emit("change", this.letters[index])
+					}
+					
+				}
+			},
+			handleTouchend: function() {
+				this.touchStatus=false
+			}
 		}
 	}
 </script>

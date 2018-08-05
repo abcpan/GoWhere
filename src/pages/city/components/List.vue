@@ -1,5 +1,7 @@
 <template>
+	<!-- 滑动容器 -->
 	<div class="list" ref="wrapper">
+		<!-- 滑动的必须是个整体 故此处有个div -->
 		<div>
 			<div class="area">
 				<div class="area-title border-topbottom">当前城市</div>
@@ -19,7 +21,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="area" v-for="(item,key) in cities" :key="key">
+			<div 
+				class="area" 
+				v-for="(item,key) in cities" 
+				:key="key"
+				:ref="key"
+			>
 				<div class="area-title border-topbottom">{{key}}</div>
 				<div class="item-list">
 					<div class="item border-bottom" v-for="innerItem in item" :key="innerItem.id">
@@ -41,11 +48,22 @@
 			},
 			cities: {
 				type: Object
+			},
+			letter: {
+				type: String
 			}
 		},
 		mounted: function() {
 			this.scroll = new Bscroll(this.$refs.wrapper)
-			console.log(this.hot)
+		},
+		//侦听器
+		watch: {
+			letter: function() {
+				if(this.letter){
+					var element = this.$refs[this.letter][0]  // 相同名字的引用 会形成数组,故使用索引
+					this.scroll.scrollToElement(element) // 滑动到某个部分
+				}
+			}
 		}
 	}
 </script>
