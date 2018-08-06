@@ -1,4 +1,5 @@
 <template>
+		<!-- touchmove 手指滑动事件,即手指滑动就会执行绑定的函数 -->
 	<ul class="list">
 		<li class="item" 
 		v-for="item in letters" 
@@ -10,7 +11,6 @@
 		@click="handleLetterClick"
 		>{{item}}</li>
 	</ul>
-	<!-- touchmove 手指滑动事件,即手指滑动就会执行绑定的函数 -->
 </template>
 
 <script>
