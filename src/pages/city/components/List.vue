@@ -61,6 +61,7 @@
 		},
 		methods: {
 			handleCityClick: function(city) {
+				//向公共仓传值
 				this.$store.commit("changeCity",city);  //给actions传值使用dispatch 给mutations 使用commit
 				this.$router.push("/");  //  编程式导航 $router是每一个页面都具有的实例属性
 			}

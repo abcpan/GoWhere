@@ -34,19 +34,20 @@ export default{
   		swiperList: [],
   		iconList:[],
   		weekendList: [],
-  		recommendList: []
+  		recommendList: [],
+      lastCity: ""
   	}
   },
 
   methods: {
   	getHomeInfo: function() {
-  		axios.get('/api/index.json')
+  		axios.get('/api/index.json?city=' +this.lastCity)
   		.then(this.getHomeInfoSucc)
   	},
   	getHomeInfoSucc: function(res) {
   		res = res.data // 解析数据
-  		console.log(res.ret)
-  		console.log(res.data)  /*查看数据*/
+  		// console.log(res.ret)
+  		// console.log(res.data)  /*查看数据*/
   		if(res.ret && res.data){
   			const data = res.data
   			this.swiperList = data.swiperList
@@ -56,9 +57,24 @@ export default{
   		}
   	}
  },
+ // 获取选择城市后的数据
+  computed: {
+    city: function() {
+      return this.$store.state.city;
+    }
+  },
+ // 页面渲染后执行
 	mounted: function() {
+    this.lastCity=this.city
 		this.getHomeInfo()
-	}
+	},
+  // 当页面重新显示时执行  在使用keep-alive 后多出的生命周期函数
+  activated: function() {
+   if(this.lastCity !==this.city){
+    this.lastCity=this.city
+    this.getHomeInfo()
+   }
+  }
 }
 </script>
 
