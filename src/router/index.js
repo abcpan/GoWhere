@@ -1,3 +1,4 @@
+// 实现页面的跳转
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/home/Home'

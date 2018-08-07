@@ -3,7 +3,7 @@
 	<!-- template对外只能暴露一个根页面标签 -->
 	<div>
 		<!-- 组件名如果为两个单词构成 组件标签为两个单词且-进行连接,如果为一个则为一个单词(两者首字均母小写)  -->
-		<home-header :city="city"></home-header>
+		<home-header ></home-header>
 		<home-swiper :list="swiperList"></home-swiper>
 		<home-icons :list="iconList"></home-icons>
 		<home-recommend :list="recommendList"></home-recommend>
@@ -31,7 +31,6 @@ export default{
   },
   data: function() {
   	return {
-  		city: "北京",
   		swiperList: [],
   		iconList:[],
   		weekendList: [],

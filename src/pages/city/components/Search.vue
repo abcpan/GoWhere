@@ -8,6 +8,7 @@
 				<li 
 					class="search-item border-bottom" 
 					v-for="item in list"
+					@click="handleCityclick(item.name)"
 				>
 				{{item.name}}</li>
 				<li class="search-item border-bottom" v-show="hasNoData">没有找到匹配数据</li>
@@ -28,6 +29,13 @@
 				keyword: '',
 				list: [],
 				timer:null
+			}
+		},
+
+		methods: {
+			handleCityclick: function(city) {
+				this.$store.commit("changeCity",city);
+				this.$router.push("/");
 			}
 		},
 		//此处完成搜索引擎

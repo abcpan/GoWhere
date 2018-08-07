@@ -7,7 +7,7 @@
 				<div class="area-title border-topbottom">当前城市</div>
 				<div class="button-list">
 					<div class="button-wrapper">
-						<div class="button">北京</div>
+						<div class="button">{{this.$store.state.city}}</div>
 					</div>
 				</div>
 			</div>
@@ -16,7 +16,9 @@
 				<div class="button-list">
 					<div class="button-wrapper" 
 						 v-for="item in hot" 
-					     :key="item.id">
+					     :key="item.id"
+					     @click="handleCityClick(item.name)"
+					 >
 						<div class="button">{{item.name}}</div>
 					</div>
 				</div>
@@ -29,7 +31,11 @@
 			>
 				<div class="area-title border-topbottom">{{key}}</div>
 				<div class="item-list">
-					<div class="item border-bottom" v-for="innerItem in item" :key="innerItem.id">
+					<div class="item border-bottom" 
+							v-for="innerItem in item" 
+							:key="innerItem.id"
+							@click="handleCityClick(innerItem.name)"
+					>
 						{{innerItem.name}}
 					</div>
 				</div>
@@ -53,8 +59,11 @@
 				type: String
 			}
 		},
-		mounted: function() {
-			this.scroll = new Bscroll(this.$refs.wrapper)
+		methods: {
+			handleCityClick: function(city) {
+				this.$store.commit("changeCity",city);  //给actions传值使用dispatch 给mutations 使用commit
+				this.$router.push("/");  //  编程式导航 $router是每一个页面都具有的实例属性
+			}
 		},
 		//侦听器
 		watch: {
@@ -64,6 +73,9 @@
 					this.scroll.scrollToElement(element) // 滑动到某个部分
 				}
 			}
+		},
+		mounted: function() {
+			this.scroll = new Bscroll(this.$refs.wrapper)
 		}
 	}
 </script>
@@ -103,7 +115,7 @@
 				text-align: center
 				margin: .1rem
 				border: .02rem solid #ccc
-				padding: .1rem .6rem .1rem .6rem
+				padding: .1rem .2rem .1rem .2rem
 		.item-list
 			.item
 				line-height: .76rem

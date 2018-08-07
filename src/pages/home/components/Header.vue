@@ -7,7 +7,8 @@
 		<!--页面跳转内置组件 -->
 		<router-link to="/city">
 			<div class="header-right">
-				{{city}}<span class="iconfont arrow-icon">&#xe6aa;</span>
+				{{this.$store.state.city}}
+				<span class="iconfont arrow-icon">&#xe6aa;</span>
 			</div>
 		</router-link>
 	</div>
@@ -17,9 +18,6 @@
 export default{
   name: 'HomeHeader',
   props: {
-  	city: {
-  		type: String
-  	}
   }
 }
 </script>
@@ -48,7 +46,8 @@ export default{
 			border-radius: .1rem
 			color: #ccc
 		.header-right
-			width: 1.24rem
+			min-width:1.04rem
+			padding:0 .1rem
 			float: right
 			text-align: center
 			font-weight:bold
