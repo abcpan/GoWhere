@@ -37,7 +37,7 @@
 		},
 		methods: {
 			disappearGallary: function() {
-				this.$emit("change");
+				this.$emit("close");
 			}
 		}
 	}

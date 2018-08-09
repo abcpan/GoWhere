@@ -42,7 +42,7 @@
 		position:relative
 		overflow: hidden  
 		height:0
-		padding-bottom: 45%  //padding如果采用百分比 是相对于父元素的百分比而言
+		padding-bottom: 55%  //padding如果采用百分比 是相对于父元素的百分比而言
 		background:#eee
 		.banner-img
 			width: 100%
