@@ -42,7 +42,7 @@ export default{
   methods: {
   	getHomeInfo: function() {
   		axios.get('/api/index.json?city=' +this.lastCity)
-  		.then(this.getHomeInfoSucc)
+  		.then(this.getHomeInfoSucc);
   	},
   	getHomeInfoSucc: function(res) {
   		res = res.data // 解析数据
