@@ -84,7 +84,7 @@
 		width: .4rem
 		.item
 			text-align:center
-			line-height: .44rem
+			line-height: .38rem
 			color:$bgColor
 	
 </style>

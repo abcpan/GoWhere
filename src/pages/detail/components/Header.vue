@@ -10,7 +10,7 @@
 		</router-link>
 		<div 
 			class="header-fixed" 
-			v-show="!showAbs"
+			v-if="!showAbs"
 			:style="opacityStyle" 
 		>
 			<router-link to="/">
@@ -35,7 +35,6 @@
 		methods: {
 			handleScroll: function() {
 				var top = document.documentElement.scrollTop;  // 计算整个文档流向上滑动的值
-				console.log(top);
 				if(top >60) {
 					this.showAbs = false;
 					var opacity = top/140; 
@@ -47,10 +46,10 @@
 			}
 		},
 		activated: function() {
-			window.addEventListener("scroll",this.handleScroll);  // 只要有变动就执行,由于为顶级对象,所以在整个浏览器中 ,这个函数都将会被执行
+			window.addEventListener("scroll",this.handleScroll)  // 只要有变动就执行,由于为顶级对象,所以在整个浏览器中 ,这个函数都将会被执行
 		},// 在 kee-alive下 页面隐藏后执行  即对全局时间的解绑
 		deactivated: function() {
-			window.removeEventListener("scroll",this.handleScroll);
+			window.removeEventListener("scroll",this.handleScroll)
 		}
 	}
 </script>
