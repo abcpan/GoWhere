@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- 使用keep-alive使得页面被一次渲染后存入内存,下次使用直接从内存读取 -->
-    <keep-alive>
+    <keep-alive exclude="Detail">
       <router-view/>
     </keep-alive>
   </div>

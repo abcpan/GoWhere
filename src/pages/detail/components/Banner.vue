@@ -1,13 +1,13 @@
 <template>
 	<div>
 		<div class="banner" @click="handleGallaryClick">
-			<img class="banner-img" src="http://img1.qunarzz.com/sight/p0/1411/d8/eec44461ecfd83df9c1669e7846b1c53.water.jpg_600x330_c147682d.jpg" >
+			<img class="banner-img" :src="bannerImg" >
 			<div class="banner-info">
-				<div class="banner-title">三亚宋城千古情景区</div>
+				<div class="banner-title">{{name}}</div>
 				<div class="banner-number"><span class="iconfont">&#xe67c;</span><span>39</span></div>
 			</div>
 		</div>
-		<common-gallary :imgs="imgs" v-if="gallaryShow" @close="handlegallaryClose"></common-gallary>
+		<common-gallary :imgs="gallaryImgs" v-if="gallaryShow" @close="handlegallaryClose"></common-gallary>
 	</div>
 </template>
 
@@ -15,11 +15,14 @@
 	import CommonGallary from 'common/gallary/Gallary'
 	export default {
 		name: 'DetailBanner',
+		props: {
+			name: String,
+			bannerImg:String,
+			gallaryImgs:Array
+		},
 		data: function() {
 			return {
 				gallaryShow:false,
-				imgs: ['http://img1.qunarzz.com/wugc/p112/201306/10/4ee7e2b4fecd93ed93835fbb.jpg_r_800x800_a4ba54a9.jpg',
-							'http://img1.qunarzz.com/sight/p0/1709/76/7691528bc7d7ad3ca3.img.png_r_800x800_56e729ef.png']
 			}
 		},
 		components:{

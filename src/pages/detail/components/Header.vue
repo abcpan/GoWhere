@@ -18,7 +18,7 @@
 			</router-link>
 			<div>景点详情</div>
 		</div>
-	</div>
+	</div> 
 </template>
 
 <script>
@@ -35,6 +35,7 @@
 		methods: {
 			handleScroll: function() {
 				var top = document.documentElement.scrollTop;  // 计算整个文档流向上滑动的值
+				console.log(top);
 				if(top >60) {
 					this.showAbs = false;
 					var opacity = top/140; 
@@ -45,10 +46,9 @@
 				}
 			}
 		},
-		// 在keep-alive后页面被显示后执行
 		activated: function() {
 			window.addEventListener("scroll",this.handleScroll);  // 只要有变动就执行,由于为顶级对象,所以在整个浏览器中 ,这个函数都将会被执行
-		},// 在 kee-alive下 页面隐藏后执行
+		},// 在 kee-alive下 页面隐藏后执行  即对全局时间的解绑
 		deactivated: function() {
 			window.removeEventListener("scroll",this.handleScroll);
 		}
@@ -71,6 +71,7 @@
 			color: #fff
 			font-size: .4rem
 	.header-fixed
+		z-index: 99
 		position:fixed
 		top: 0
 		right:0
